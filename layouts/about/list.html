@@ -12,7 +12,7 @@
         <p class="highlight">{{ .Params.about.highlight }}</p>
       </div>
       <div class="about-image">
-        <img src="https://placehold.co/600x400/0E7C86/FFFFFF?text=Art+Meets+Commerce" alt="Art Meets Commerce" loading="lazy">
+        <img src="https://placehold.co/600x400/d0d0d0/d0d0d0" alt="About One Eyed Graphics" loading="lazy">
       </div>
     </div>
   </div>
@@ -37,11 +37,7 @@
         </ul>
         {{ end }}
         <div class="service-image">
-          {{ if eq $index 0 }}
-          <img src="https://placehold.co/800x300/0E7C86/FFFFFF?text=Fleet+%26+Vehicle+Wraps" alt="Fleet & Vehicle Wraps" loading="lazy">
-          {{ else }}
-          <img src="https://placehold.co/800x300/D4A574/FFFFFF?text=Commercial+%26+Trade+Show+Signage" alt="Commercial & Trade Show Signage" loading="lazy">
-          {{ end }}
+          <img src="https://placehold.co/800x300/d0d0d0/d0d0d0" alt="{{ .title }}" loading="lazy">
         </div>
       </div>
       {{ end }}
