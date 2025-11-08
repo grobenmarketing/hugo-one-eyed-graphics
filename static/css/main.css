@@ -379,7 +379,28 @@ section {
 }
 
 /* ------------------- */
-/* --- 7b. About Page --- */
+/* --- 7b. About Section (About Page) --- */
+/* ------------------- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-content {
+    text-align: left;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------- */
+/* --- 7c. Services (About Page) --- */
 /* ------------------- */
 
 /* About Section with Image */
@@ -428,12 +449,13 @@ section {
 
 .service-image img {
     width: 100%;
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* ------------------- */
-/* --- 7c. Contact Page --- */
+/* --- 7d. Contact Page --- */
 /* ------------------- */
 
 /* --- UPDATED: Simplified Contact Info styles --- */
@@ -609,7 +631,7 @@ footer h4 {
         grid-template-columns: 1fr;
     }
 
-    .about-content {
+    .about-grid {
         grid-template-columns: 1fr;
     }
 }
