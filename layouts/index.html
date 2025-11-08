@@ -1,0 +1,74 @@
+{{ define "main" }}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>{{ .Params.hero.title }}</h1>
+        <p class="subheadline">{{ .Params.hero.subtitle }}</p>
+        <div>
+            <a href="{{ .Params.hero.cta_primary_link | relURL }}" class="btn btn-primary">{{ .Params.hero.cta_primary_text }}</a>
+            <a href="{{ .Params.hero.cta_secondary_link }}" class="btn btn-secondary">{{ .Params.hero.cta_secondary_text }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Problem/Solution Section -->
+<section class="problem-solution">
+    <div class="container">
+        <h2>{{ .Params.problem.title | safeHTML }}</h2>
+        {{ range .Params.problem.paragraphs }}
+        <p>{{ . }}</p>
+        {{ end }}
+        <p class="highlight">{{ .Params.problem.highlight | safeHTML }}</p>
+    </div>
+</section>
+
+<!-- Pillars Section -->
+<section class="pillars">
+    <div class="container">
+        <div class="pillar-grid">
+            {{ range .Params.pillars }}
+            <div class="pillar">
+                <h3>{{ .title }}</h3>
+                <p>{{ .description }}</p>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery" id="gallery">
+    <div class="container">
+        <h2>{{ .Params.gallery.title }}</h2>
+        <p class="subheadline">{{ .Params.gallery.subtitle }}</p>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons" id="filterBtnContainer">
+            <button class="filter-btn active" data-filter="all">All</button>
+            {{ range .Site.Data.gallery_categories }}
+            <button class="filter-btn" data-filter="{{ .slug }}">{{ .name }}</button>
+            {{ end }}
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            {{ partial "gallery.html" . }}
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="final-cta">
+    <div class="container">
+        <h2>{{ .Params.cta.title }}</h2>
+        <p class="subheadline">{{ .Params.cta.subtitle | safeHTML }}</p>
+        <p class="stats">{{ .Params.cta.stats | safeHTML }}</p>
+        <div>
+            <a href="{{ .Params.cta.primary_link | relURL }}" class="btn btn-primary">{{ .Params.cta.primary_text }}</a>
+            <a href="{{ .Params.cta.secondary_link }}" class="btn btn-secondary">{{ .Params.cta.secondary_text }}</a>
+        </div>
+    </div>
+</section>
+
+{{ end }}
