@@ -60,6 +60,7 @@ a {
 img {
     max-width: 100%;
     display: block;
+    height: auto; /* Maintain aspect ratio */
 }
 
 .container {
@@ -389,9 +390,7 @@ section {
     align-items: start;
 }
 
-.about-text {
-    /* Text takes up more space */
-}
+/* about-text styling handled by grid layout */
 
 .about-image img {
     width: 100%;

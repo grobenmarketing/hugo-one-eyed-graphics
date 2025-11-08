@@ -18,3 +18,10 @@ Thumbs.db
 # Temporary files
 *.log
 .hugo_build.lock
+
+# Node
+node_modules/
+package-lock.json
+
+# Image optimization backups
+**/originals/

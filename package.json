@@ -1,0 +1,22 @@
+{
+  "name": "hugo-one-eyed-graphics",
+  "version": "1.0.0",
+  "description": "One Eyed Graphics - Fleet wraps, vehicle graphics, and commercial signage website",
+  "private": true,
+  "scripts": {
+    "optimize-images": "node optimize-images.js",
+    "dev": "hugo server -D",
+    "build": "hugo --gc --minify"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  },
+  "keywords": [
+    "hugo",
+    "static-site",
+    "fleet-wraps",
+    "vehicle-graphics"
+  ],
+  "author": "One Eyed Graphics",
+  "license": "UNLICENSED"
+}
