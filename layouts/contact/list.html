@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+<!-- Contact Section -->
+<section class="gallery">
+    <div class="container" style="max-width: 900px; padding-bottom: 8rem;">
+        <h2>{{ .Params.heading }}</h2>
+        <p class="subheadline">{{ .Params.subheading }}</p>
+
+        <div class="contact-info">
+            <p>
+                <strong>Call Us</strong>
+                <a href="tel:{{ .Site.Params.contact.phone }}">{{ .Site.Params.contact.phone }}</a>
+            </p>
+            <p>
+                <strong>Email Us</strong>
+                <a href="mailto:{{ .Site.Params.contact.email }}">{{ .Site.Params.contact.email }}</a>
+            </p>
+            <p>
+                <strong>Visit Us</strong>
+                {{ .Site.Params.contact.address | safeHTML }}
+            </p>
+            <p>
+                <strong>Website</strong>
+                <a href="{{ .Site.Params.contact.website }}" target="_blank">{{ .Site.Params.contact.website | replaceRE "^https?://" "" }}</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+{{ end }}
