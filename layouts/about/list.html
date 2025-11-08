@@ -3,11 +3,18 @@
 <!-- About Section -->
 <section id="about">
   <div class="container">
-    <h2>{{ .Params.about.title }}</h2>
-    {{ range .Params.about.paragraphs }}
-    <p>{{ . }}</p>
-    {{ end }}
-    <p class="highlight">{{ .Params.about.highlight }}</p>
+    <div class="about-content">
+      <div class="about-text">
+        <h2>{{ .Params.about.title }}</h2>
+        {{ range .Params.about.paragraphs }}
+        <p>{{ . }}</p>
+        {{ end }}
+        <p class="highlight">{{ .Params.about.highlight }}</p>
+      </div>
+      <div class="about-image">
+        <img src="/images/placeholders/about-header.jpeg" alt="One Eyed Graphics Work" loading="lazy">
+      </div>
+    </div>
   </div>
 </section>
 
@@ -18,7 +25,7 @@
     <p class="subheadline">{{ .Params.services.subtitle }}</p>
 
     <div class="service-grid">
-      {{ range .Params.services.items }}
+      {{ range $index, $service := .Params.services.items }}
       <div class="service-item">
         <h3>{{ .title }}</h3>
         <p>{{ .description }}</p>
@@ -28,6 +35,15 @@
           <li>{{ . | safeHTML }}</li>
           {{ end }}
         </ul>
+        {{ end }}
+        {{ if eq $index 0 }}
+        <div class="service-image">
+          <img src="/images/placeholders/service-1.jpeg" alt="Fleet & Vehicle Wraps" loading="lazy">
+        </div>
+        {{ else if eq $index 1 }}
+        <div class="service-image">
+          <img src="/images/placeholders/service-2.jpeg" alt="Commercial & Trade Show Signage" loading="lazy">
+        </div>
         {{ end }}
       </div>
       {{ end }}

@@ -10,7 +10,11 @@
         {{- if not .IsDir -}}
             {{- $imagePath := printf "%s/%s" $categoryPath .Name -}}
             <div class="gallery-item" data-category="{{ $category.slug }}">
-                <img src="{{ $imagePath | relURL }}" alt="{{ $category.name }} - {{ .Name }}">
+                <img src="{{ $imagePath | relURL }}"
+                     alt="{{ $category.name }} - {{ .Name }}"
+                     loading="lazy"
+                     class="gallery-image"
+                     data-full-src="{{ $imagePath | relURL }}">
             </div>
         {{- end -}}
     {{- end -}}

@@ -20,6 +20,12 @@
 
     {{- partial "footer.html" . -}}
 
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span id="closeModal" class="modal-close">&times;</span>
+        <img id="modalImage" class="modal-content" alt="">
+    </div>
+
     <script src="{{ "js/main.js" | relURL }}"></script>
 </body>
 </html>

@@ -184,7 +184,7 @@ section {
 /* --- 4. Hero Section --- */
 /* ------------------- */
 .hero {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://picsum.photos/seed/hero/1920/1080');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('/images/gallery/vehicle/IMG_4610.jpeg');
     background-size: cover;
     background-position: center;
     padding: 8rem 0;
@@ -318,15 +318,88 @@ section {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .gallery-item:hover img {
     transform: scale(1.05);
 }
 
+/* --- Image Modal --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: var(--color-light);
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--color-accent);
+}
+
 /* ------------------- */
-/* --- 7b. Services (About Page) --- */
+/* --- 7b. About Page --- */
 /* ------------------- */
+
+/* About Section with Image */
+.about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.about-text {
+    /* Text takes up more space */
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Services Section */
 .service-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -348,6 +421,16 @@ section {
 .service-item li {
     margin-bottom: 0.5rem;
     color: var(--color-mid);
+}
+
+.service-image {
+    margin-top: 1.5rem;
+}
+
+.service-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* ------------------- */
@@ -524,6 +607,10 @@ footer h4 {
 
     /* --- NEW RESPONSIVE RULES --- */
     .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content {
         grid-template-columns: 1fr;
     }
 }
