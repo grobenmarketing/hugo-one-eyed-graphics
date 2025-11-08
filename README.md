@@ -83,27 +83,45 @@ Edit the frontmatter (YAML between `---`) to update headlines, CTAs, and other c
 
 ### Managing the Gallery
 
-The gallery system is category-based and easy to manage:
+The gallery system is category-based with sortable/filterable categories. Visitors can click filter buttons to view specific types of work.
+
+#### Current Gallery Structure
+
+```
+static/images/gallery/
+├── vehicle/      (14 images)
+├── signage/      (8 images)
+└── tradeshow/    (26 images)
+```
 
 #### Adding Images to Existing Categories
 
-1. Navigate to `static/images/gallery/`
-2. Choose the appropriate category folder:
-   - `vehicle/` - Vehicle wraps
-   - `signage/` - Signs and banners
-   - `tradeshow/` - Trade show displays
-3. Copy your images into the folder
-4. Images will automatically appear on the website
+Simply add new images to the appropriate category folder:
+
+- `static/images/gallery/vehicle/` - for vehicle wraps and fleet graphics
+- `static/images/gallery/signage/` - for signs, building graphics, and logos
+- `static/images/gallery/tradeshow/` - for trade show displays and booth graphics
+
+**The gallery will automatically pick them up when the site rebuilds!**
 
 #### Adding a New Category
 
-1. Create a new folder in `static/images/gallery/` (e.g., `boats/`)
-2. Edit `data/gallery_categories.yaml`:
+If you want to add more categories (like "Window Graphics" or "Banners"), follow these steps:
+
+1. **Add the category** to `data/gallery_categories.yaml`:
    ```yaml
-   - name: "Boat Wraps"
-     slug: "boats"
+   - name: "Window Graphics"
+     slug: "window"
    ```
-3. Add images to the new folder
+
+2. **Create a new folder** in `static/images/gallery/` matching the slug:
+   ```
+   static/images/gallery/window/
+   ```
+
+3. **Add images** to the new folder
+
+4. The filter button will automatically appear on the gallery section
 
 **Note**: The `slug` must match the folder name exactly.
 

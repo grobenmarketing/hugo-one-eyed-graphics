@@ -1,0 +1,68 @@
+{{ define "main" }}
+
+<!-- About Section -->
+<section id="about">
+  <div class="container">
+    <h2>{{ .Params.about.title }}</h2>
+    {{ range .Params.about.paragraphs }}
+    <p>{{ . }}</p>
+    {{ end }}
+    <p class="highlight">{{ .Params.about.highlight }}</p>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="gallery" id="services">
+  <div class="container">
+    <h2>{{ .Params.services.title }}</h2>
+    <p class="subheadline">{{ .Params.services.subtitle }}</p>
+
+    <div class="service-grid">
+      {{ range .Params.services.items }}
+      <div class="service-item">
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+        {{ with .list_items }}
+        <ul>
+          {{ range . }}
+          <li>{{ . | safeHTML }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="pillars">
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 3rem; color: var(--color-accent);">{{ .Params.process.title }}</h2>
+    <div class="pillar-grid">
+      {{ range .Params.process.steps }}
+      <div class="pillar">
+        <h3>{{ .title }}</h3>
+        <p>{{ .description | safeHTML }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ if .Params.show_cta }}
+<!-- Final CTA Section -->
+<section class="final-cta">
+    <div class="container">
+        <h2>{{ .Params.cta.title }}</h2>
+        <p class="subheadline">{{ .Params.cta.subtitle | safeHTML }}</p>
+        <p class="stats">{{ .Params.cta.stats | safeHTML }}</p>
+        <div>
+            <a href="{{ .Params.cta.primary_link | relURL }}" class="btn btn-primary">{{ .Params.cta.primary_text }}</a>
+            <a href="{{ .Params.cta.secondary_link }}" class="btn btn-secondary">{{ .Params.cta.secondary_text }}</a>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ end }}
