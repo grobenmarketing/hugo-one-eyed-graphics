@@ -1,0 +1,18 @@
+<header class="main-header">
+    <div class="container">
+        <a href="{{ "/" | relURL }}" class="logo">{{ .Site.Title }}</a>
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="{{ "/" | relURL }}" class="{{ if .IsHome }}active{{ end }}">Home</a></li>
+                <li><a href="{{ "/about" | relURL }}" class="{{ if eq .Section "about" }}active{{ end }}">About & Services</a></li>
+                <li><a href="{{ "/contact" | relURL }}" class="{{ if eq .Section "contact" }}active{{ end }}">Contact</a></li>
+                <li><a href="{{ "/contact" | relURL }}" class="btn btn-primary">Get Your Fleet Quote</a></li>
+            </ul>
+        </nav>
+        <div class="burger-menu" id="burgerMenu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+</header>

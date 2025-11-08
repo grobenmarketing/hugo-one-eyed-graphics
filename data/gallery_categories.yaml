@@ -1,0 +1,6 @@
+- name: "Vehicle Wraps"
+  slug: "vehicle"
+- name: "Signage"
+  slug: "signage"
+- name: "Trade Shows"
+  slug: "tradeshow"

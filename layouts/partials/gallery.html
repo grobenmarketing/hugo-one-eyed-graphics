@@ -1,0 +1,17 @@
+{{- /* Gallery Partial - Dynamically loads images from content/gallery folders */ -}}
+
+{{- /* Get all gallery pages organized by category */ -}}
+{{- range $category := .Site.Data.gallery_categories -}}
+    {{- /* Get all images for this category from static/images/gallery/{category}/ */ -}}
+    {{- $categoryPath := printf "images/gallery/%s" $category.slug -}}
+    {{- $images := readDir (path.Join "static" $categoryPath) -}}
+
+    {{- range $images -}}
+        {{- if not .IsDir -}}
+            {{- $imagePath := printf "%s/%s" $categoryPath .Name -}}
+            <div class="gallery-item" data-category="{{ $category.slug }}">
+                <img src="{{ $imagePath | relURL }}" alt="{{ $category.name }} - {{ .Name }}">
+            </div>
+        {{- end -}}
+    {{- end -}}
+{{- end -}}

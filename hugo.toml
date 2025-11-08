@@ -1,0 +1,22 @@
+baseURL = "https://oneeyedgraphics.com/"
+languageCode = "en-us"
+title = "One Eyed Graphics"
+
+[params]
+  slogan = "We're called One Eyed Graphics, but we will keep both eyes on your project."
+
+  [params.contact]
+    phone = "419-565-8945"
+    email = "info@oneeyedgraphics.com"
+    address = "80 S. Main Street<br>Mansfield, OH 44902"
+    website = "https://oneeyedgraphics.com"
+
+  [params.social]
+    facebook = "#"
+    instagram = "#"
+    linkedin = "#"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Allow HTML in markdown
