@@ -184,7 +184,7 @@ section {
 /* --- 4. Hero Section --- */
 /* ------------------- */
 .hero {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://picsum.photos/seed/hero/1920/1080');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('/images/gallery/vehicle/IMG_4610.jpeg');
     background-size: cover;
     background-position: center;
     padding: 8rem 0;
