@@ -6,9 +6,9 @@ about:
   title: "Art-Meets-Commerce: 30+ Years of Craft"
   paragraphs:
     - "Since 1993, Jack Motta has been focused on one thing: creating art that sells FOR his clients."
-    - "One Eyed Graphics brings a design-first, professional art touch to wraps, decals, signs, and banners."
+    - "One Eyed Graphics brings a design-first, professional-art touch to wraps, decals, signs, and banners."
     - "Every installation is handled by 3M certified staff."
-  highlight: "We make sure your brand looks established, trustworthy in the eyes of your clients and customers."
+  highlight: "We make sure your brand looks established, trustworthy in the eyes of your customers."
 
 services:
   title: "Your Path to a Referral-Generating Fleet"
@@ -33,9 +33,9 @@ process:
       description: "Flawless, bubble-free finish. <br>Built to last 5+ years."
 
 cta:
-  title: "Stop Wasting Money on Ads. Your Fleet IS Your Best Ad."
-  subtitle: "This is a one-time marketing investment that works for 5+ years<sup>1</sup>."
-  stats: "Reaching the same 1,000 people is over 3.7 times cheaper than a billboard<sup>2</sup> and 8.4 times less than the cheapest social media ads<sup>3</sup>."
+  title: "Your Fleet IS Your Best Ad."
+  subtitle: "This is a one-time marketing investment that works for 5+ years."
+  stats: "Reaching the same 1,000 people is over 3.7 times cheaper than a billboard and 8.4 times less than the cheapest social media ads."
   primary_text: "Get Your Fleet Quote"
   primary_link: "/contact"
   secondary_text: "See Our Work"
