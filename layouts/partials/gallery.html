@@ -10,9 +10,9 @@
         {{- if not .IsDir -}}
             {{- $imagePath := printf "/%s/%s" $categoryPath .Name -}}
             {{- /* Generate Netlify Image CDN URLs for responsive sizes */ -}}
-            {{- $img400 := printf "/.netlify/images?url=%s&w=400&fit=cover&q=85" $imagePath -}}
-            {{- $img800 := printf "/.netlify/images?url=%s&w=800&fit=cover&q=85" $imagePath -}}
-            {{- $img1200 := printf "/.netlify/images?url=%s&w=1200&fit=cover&q=85" $imagePath -}}
+            {{- $img400 := printf "/.netlify/images?url=%s&w=400&q=85" $imagePath -}}
+            {{- $img800 := printf "/.netlify/images?url=%s&w=800&q=85" $imagePath -}}
+            {{- $img1200 := printf "/.netlify/images?url=%s&w=1200&q=85" $imagePath -}}
             <div class="gallery-item" data-category="{{ $category.slug }}">
                 <img
                     src="{{ $img800 }}"
