@@ -7,29 +7,8 @@
         <p class="subheadline">{{ .Params.subheading }}</p>
 
         <!-- Render Markdown content from _index.md -->
-        {{ if .Content }}
-        <div class="contact-content">
-            {{ .Content }}
-        </div>
-        {{ end }}
-
         <div class="contact-info">
-            <p>
-                <strong>Call Us</strong>
-                <a href="tel:{{ .Site.Params.contact.phone }}">{{ .Site.Params.contact.phone }}</a>
-            </p>
-            <p>
-                <strong>Email Us</strong>
-                <a href="mailto:{{ .Site.Params.contact.email }}">{{ .Site.Params.contact.email }}</a>
-            </p>
-            <p>
-                <strong>Visit Us</strong>
-                {{ .Site.Params.contact.address | safeHTML }}
-            </p>
-            <p>
-                <strong>Website</strong>
-                <a href="{{ .Site.Params.contact.website }}" target="_blank">{{ .Site.Params.contact.website | replaceRE "^https?://" "" }}</a>
-            </p>
+            {{ .Content }}
         </div>
     </div>
 </section>
