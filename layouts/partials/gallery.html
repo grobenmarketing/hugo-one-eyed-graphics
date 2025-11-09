@@ -1,4 +1,4 @@
-{{- /* Gallery Partial - Dynamically loads images from content/gallery folders */ -}}
+{{- /* Gallery Partial - Dynamically loads images from content/gallery folders with Netlify Image CDN optimization */ -}}
 
 {{- /* Get all gallery pages organized by category */ -}}
 {{- range $category := .Site.Data.gallery_categories -}}
@@ -8,9 +8,19 @@
 
     {{- range $images -}}
         {{- if not .IsDir -}}
-            {{- $imagePath := printf "%s/%s" $categoryPath .Name -}}
+            {{- $imagePath := printf "/%s/%s" $categoryPath .Name -}}
+            {{- /* Generate Netlify Image CDN URLs for responsive sizes */ -}}
+            {{- $img400 := printf "/.netlify/images?url=%s&w=400&fit=cover&q=85" $imagePath -}}
+            {{- $img800 := printf "/.netlify/images?url=%s&w=800&fit=cover&q=85" $imagePath -}}
+            {{- $img1200 := printf "/.netlify/images?url=%s&w=1200&fit=cover&q=85" $imagePath -}}
             <div class="gallery-item" data-category="{{ $category.slug }}">
-                <img src="{{ $imagePath | relURL }}" alt="{{ $category.name }} - {{ .Name }}">
+                <img
+                    src="{{ $img800 }}"
+                    srcset="{{ $img400 }} 400w, {{ $img800 }} 800w, {{ $img1200 }} 1200w"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    alt="{{ $category.name }} - {{ .Name }}"
+                    loading="lazy"
+                    decoding="async">
             </div>
         {{- end -}}
     {{- end -}}

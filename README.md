@@ -10,7 +10,11 @@ hugo-one-eyed-graphics/
 ├── content/             # Markdown content files
 │   ├── _index.md       # Home page content
 │   ├── about/          # About page
-│   └── contact/        # Contact page
+│   ├── contact/        # Contact page
+│   └── gallery/        # Gallery entries (managed by Decap CMS)
+│       ├── vehicle/
+│       ├── signage/
+│       └── tradeshow/
 ├── data/               # Data files
 │   └── gallery_categories.yaml  # Gallery category definitions
 ├── layouts/            # HTML templates
@@ -20,9 +24,12 @@ hugo-one-eyed-graphics/
 │   ├── partials/       # Reusable components
 │   │   ├── header.html
 │   │   ├── footer.html
-│   │   └── gallery.html
+│   │   └── gallery.html (with Netlify Image CDN optimization)
 │   └── index.html      # Home page template
 ├── static/             # Static assets
+│   ├── admin/          # Decap CMS interface
+│   │   ├── index.html # CMS admin page
+│   │   └── config.yml # CMS configuration
 │   ├── css/
 │   │   └── main.css   # All styles
 │   ├── js/
@@ -32,7 +39,8 @@ hugo-one-eyed-graphics/
 │           ├── vehicle/
 │           ├── signage/
 │           └── tradeshow/
-└── hugo.toml          # Hugo configuration
+├── hugo.toml          # Hugo configuration
+└── DECAP_CMS_SETUP.md # Detailed CMS setup guide
 ```
 
 ## Getting Started
@@ -125,12 +133,120 @@ If you want to add more categories (like "Window Graphics" or "Banners"), follow
 
 **Note**: The `slug` must match the folder name exactly.
 
+### Managing Gallery with Decap CMS (Recommended)
+
+The site includes **Decap CMS** (formerly Netlify CMS) - a user-friendly content management system that makes it easy to upload and manage gallery images without touching code or files directly.
+
+#### Setting Up Decap CMS
+
+**First-time setup on Netlify:**
+
+1. **Enable Netlify Identity**:
+   - Go to your Netlify dashboard
+   - Navigate to **Site settings** > **Identity**
+   - Click **Enable Identity**
+   - Under **Registration preferences**, select **Invite only** (recommended for security)
+
+2. **Enable Git Gateway**:
+   - In Identity settings, go to **Services** > **Git Gateway**
+   - Click **Enable Git Gateway**
+
+3. **Invite Users**:
+   - In Netlify Identity settings, click **Invite users**
+   - Enter email addresses for people who should have CMS access
+   - They'll receive an invitation email to set up their account
+
+#### Accessing the CMS
+
+Once Netlify Identity is enabled, access the CMS at:
+
+```
+https://oneeyedgraphics.com/admin/
+```
+
+Or for local development:
+```
+http://localhost:1313/admin/
+```
+
+#### Adding Gallery Images via CMS
+
+1. **Log in** to the CMS at `/admin/`
+2. **Choose the appropriate gallery category**:
+   - **Gallery - Vehicle Wraps**
+   - **Gallery - Signage**
+   - **Gallery - Trade Shows**
+3. Click **New [Category] Image** button
+4. **Fill in the fields**:
+   - **Title** (optional): A descriptive name for organization
+   - **Image**: Click to upload your image file
+   - **Description** (optional): Additional notes about the project
+   - **Date Added**: Automatically filled with current date/time
+5. Click **Publish**
+6. The image will be automatically saved to the correct folder and appear in your gallery!
+
+#### Benefits of Using Decap CMS
+
+- **No technical knowledge required** - Upload images through a user-friendly interface
+- **Automatic organization** - Images are saved to the correct category folders
+- **Version control** - All changes are tracked in Git
+- **Team collaboration** - Multiple users can manage content
+- **Draft/Publish workflow** - Review changes before making them live
+
+#### Local Development with Decap CMS
+
+To use Decap CMS locally for testing:
+
+1. **Install and run the proxy server**:
+   ```bash
+   npx decap-server
+   ```
+
+2. **In another terminal, run Hugo**:
+   ```bash
+   hugo server
+   ```
+
+3. **Access the CMS** at `http://localhost:1313/admin/`
+4. Login with any email/password (authentication is bypassed locally)
+
 ### Image Guidelines
 
 - **Format**: JPG, PNG, or WebP
 - **Size**: 1200x800px minimum (1920x1280px recommended)
 - **File naming**: Use descriptive names with hyphens (e.g., `fleet-van-wrap-hvac.jpg`)
-- **Optimization**: Compress images before uploading to keep page load times fast
+- **File size**: Try to keep images under 2MB before upload for best performance
+
+### Automatic Image Optimization
+
+The gallery uses **Netlify Image CDN** to automatically optimize all images:
+
+#### How It Works
+
+When images are displayed on the site, Netlify automatically:
+- **Resizes images** to appropriate sizes for different devices (400px, 800px, 1200px widths)
+- **Converts formats** to WebP or AVIF for browsers that support them
+- **Compresses images** to balance quality and file size (85% quality)
+- **Caches transformations** at the edge for fast global delivery
+- **Lazy loads images** as visitors scroll down the page
+
+#### Benefits
+
+- **Faster page loads**: Gallery size reduced from ~95MB to ~5-10MB
+- **Better mobile experience**: Serves smaller images to phones and tablets
+- **Modern formats**: Automatically uses WebP/AVIF when supported
+- **Zero configuration**: Works automatically for all gallery images
+- **Free with Netlify**: No additional cost beyond normal bandwidth
+
+#### Technical Details
+
+Images are served through Netlify Image CDN with these parameters:
+- **URL format**: `/.netlify/images?url=/images/gallery/{category}/{filename}.jpg&w=800&fit=cover&q=85`
+- **Responsive srcset**: Multiple sizes for different screen widths
+- **Fit mode**: Cover (maintains aspect ratio, fills the container)
+- **Quality**: 85% (optimal balance between quality and file size)
+
+This means you can upload high-resolution images and they'll automatically be optimized for web delivery!
 
 ## Site Configuration
 
