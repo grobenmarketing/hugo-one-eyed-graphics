@@ -2,7 +2,7 @@
 title: "Home"
 
 hero:
-  title: "While You're Working, Driving, or Parked<br>Your Fleet Should Be Selling For You."
+  title: "While You're Working, Driving, or Parked Your Fleet Should Be Selling For You."
   subtitle: "Stop waiting for the phone to ring. A single wrap can get 1,600 views per hour."
   cta_primary_text: "I Want My Fleet to Sell For Me"
   cta_primary_link: "/contact"
@@ -19,10 +19,10 @@ problem:
 pillars:
   - title: "High Quality"
     description: "Get a wrap that looks professional from far away but has attractive, artistic detail up close."
-  - title: "Investment-Grade Durability"
-    description: "We use superior 3M materials and certified installation techniques. This is a 5+ year marketing investment, not a monthly ad expense."
+  - title: "Durabile"
+    description: "We use superior 3M materials and our staff is trained on certified installation techniques."
   - title: "Targeted ROI"
-    description: "While you're on the job, your vehicle is selling for you. Our wraps are designed to catch eyes. It's time to get more calls."
+    description: "While you're on the job, your vehicle is selling for you. Our wraps are designed to catch eyes."
 
 gallery:
   title: "Our Work"
