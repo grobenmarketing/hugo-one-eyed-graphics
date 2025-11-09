@@ -43,40 +43,6 @@ hugo-one-eyed-graphics/
 └── DECAP_CMS_SETUP.md # Detailed CMS setup guide
 ```
 
-## Getting Started
-
-### Prerequisites
-
-- Hugo Extended v0.112.0 or higher
-- Git
-
-### Installation
-
-1. Install Hugo:
-   ```bash
-   # macOS
-   brew install hugo
-
-   # Windows (using Chocolatey)
-   choco install hugo-extended
-
-   # Linux (Ubuntu/Debian)
-   sudo apt-get install hugo
-   ```
-
-2. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd hugo-one-eyed-graphics
-   ```
-
-3. Run the development server:
-   ```bash
-   hugo server -D
-   ```
-
-4. Open your browser to `http://localhost:1313`
-
 ## Content Management
 
 ### Editing Page Content
@@ -92,15 +58,6 @@ Edit the frontmatter (YAML between `---`) to update headlines, CTAs, and other c
 ### Managing the Gallery
 
 The gallery system is category-based with sortable/filterable categories. Visitors can click filter buttons to view specific types of work.
-
-#### Current Gallery Structure
-
-```
-static/images/gallery/
-├── vehicle/      (14 images)
-├── signage/      (8 images)
-└── tradeshow/    (26 images)
-```
 
 #### Adding Images to Existing Categories
 
@@ -193,23 +150,6 @@ http://localhost:1313/admin/
 - **Team collaboration** - Multiple users can manage content
 - **Draft/Publish workflow** - Review changes before making them live
 
-#### Local Development with Decap CMS
-
-To use Decap CMS locally for testing:
-
-1. **Install and run the proxy server**:
-   ```bash
-   npx decap-server
-   ```
-
-2. **In another terminal, run Hugo**:
-   ```bash
-   hugo server
-   ```
-
-3. **Access the CMS** at `http://localhost:1313/admin/`
-4. Login with any email/password (authentication is bypassed locally)
-
 ### Image Guidelines
 
 - **Format**: JPG, PNG, or WebP
@@ -280,14 +220,6 @@ The site uses Google Fonts:
 
 To change fonts, edit the Google Fonts link in `layouts/_default/baseof.html` and update the CSS variables in `main.css`.
 
-## Building for Production
-
-```bash
-hugo --minify
-```
-
-The site will be built to the `public/` directory, ready for deployment.
-
 ## Deployment
 
 ### Netlify
@@ -311,13 +243,3 @@ The site will be built to the `public/` directory, ready for deployment.
 
 1. Build: `hugo --minify`
 2. Upload the contents of `public/` to your web server
-
-## Support
-
-For questions or issues, please contact:
-- Phone: 419-565-8945
-- Email: info@oneeyedgraphics.com
-
-## License
-
-Copyright © 2025 One Eyed Graphics. All Rights Reserved.
