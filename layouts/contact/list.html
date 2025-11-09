@@ -6,6 +6,13 @@
         <h2>{{ .Params.heading }}</h2>
         <p class="subheadline">{{ .Params.subheading }}</p>
 
+        <!-- Render Markdown content from _index.md -->
+        {{ if .Content }}
+        <div class="contact-content">
+            {{ .Content }}
+        </div>
+        {{ end }}
+
         <div class="contact-info">
             <p>
                 <strong>Call Us</strong>
