@@ -46,9 +46,14 @@
         <!-- Filter Buttons -->
         <div class="filter-buttons" id="filterBtnContainer">
             <button class="filter-btn active" data-filter="all">All</button>
-            {{ range .Site.Data.gallery_categories }}
-            <button class="filter-btn" data-filter="{{ .slug }}">{{ .name }}</button>
-            {{ end }}
+            {{- $galleryPath := "static/images/gallery" -}}
+            {{- $categories := readDir $galleryPath -}}
+            {{- range $categories -}}
+                {{- if .IsDir -}}
+                    {{- $categoryName := .Name | title -}}
+                    <button class="filter-btn" data-filter="{{ .Name }}">{{ $categoryName }}</button>
+                {{- end -}}
+            {{- end }}
         </div>
 
         <!-- Gallery Grid -->
