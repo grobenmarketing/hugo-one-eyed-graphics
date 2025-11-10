@@ -184,7 +184,7 @@ section {
 /* --- 4. Hero Section --- */
 /* ------------------- */
 .hero {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('/images/gallery/vehicle/IMG_4610.jpeg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('/images/gallery/vehicle/IMG_4610.jpeg');
     background-size: cover;
     background-position: center;
     padding: 8rem 0;
@@ -196,12 +196,12 @@ section {
 }
 
 .hero h1 {
-    color: var(--color-accent); /* Accent color */
+    color: var(--color-light); /* White text for dark overlay */
 }
 
 .hero .subheadline {
     font-size: 1.5rem;
-    color: var(--color-mid); /* Softer sub-text */
+    color: var(--color-light); /* White text for dark overlay */
     margin-bottom: 2rem;
 }
 
@@ -322,6 +322,17 @@ section {
 
 .gallery-item:hover img {
     transform: scale(1.05);
+}
+
+/* --- View More Button --- */
+.view-more-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.view-more-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
 }
 
 /* ------------------- */
