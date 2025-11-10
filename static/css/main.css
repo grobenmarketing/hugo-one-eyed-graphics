@@ -616,6 +616,7 @@ footer h4 {
 
 .footer-contact p {
     margin-bottom: 0.5rem;
+    color: #F5F5F5; /* Almost white */
 }
 
 .bottom-bar {
@@ -623,7 +624,7 @@ footer h4 {
     padding: 1.5rem 0;
     /* --- UPDATED --- */
     font-size: 0.9rem;
-    color: #BBBBBB; /* Brighter gray */
+    color: #F5F5F5; /* Almost white */
 }
 
 /* ------------------- */
