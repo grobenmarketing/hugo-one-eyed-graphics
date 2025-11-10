@@ -313,6 +313,10 @@ section {
     background: var(--color-bg-light); /* Light gray bg for loading state */
     transition: opacity 0.4s ease, transform 0.3s ease;
     /* Row span will be set dynamically by JS */
+    min-height: 200px; /* Minimum height to prevent thin lines */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-item img {
