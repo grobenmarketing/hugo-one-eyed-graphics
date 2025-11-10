@@ -10,6 +10,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Masonry layout function - sets row spans based on image heights
+    function resizeGridItems() {
+        const grid = document.querySelector('.gallery-grid');
+        if (!grid) return;
+
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const rowHeight = 1; // matches grid-auto-rows: 1px
+        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap'));
+
+        galleryItems.forEach(item => {
+            // Only calculate for visible items
+            if (item.style.display === 'none') return;
+
+            const content = item.querySelector('img');
+            if (content && content.complete) {
+                const height = item.getBoundingClientRect().height;
+                const rowSpan = Math.ceil((height + rowGap) / (rowHeight + rowGap));
+                item.style.gridRowEnd = 'span ' + rowSpan;
+            }
+        });
+    }
+
+    // Load all images and then apply masonry layout
+    function initMasonry() {
+        const images = document.querySelectorAll('.gallery-item img');
+        let loadedCount = 0;
+
+        if (images.length === 0) return;
+
+        images.forEach(img => {
+            if (img.complete) {
+                loadedCount++;
+            } else {
+                img.addEventListener('load', () => {
+                    loadedCount++;
+                    if (loadedCount === images.length) {
+                        resizeGridItems();
+                    }
+                });
+            }
+        });
+
+        // If all images are already cached/loaded
+        if (loadedCount === images.length) {
+            resizeGridItems();
+        }
+    }
+
     // Gallery filter functionality
     const filterContainer = document.getElementById('filterBtnContainer');
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -35,7 +83,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         item.style.display = 'none';
                     }
                 });
+
+                // Recalculate masonry after filtering
+                setTimeout(resizeGridItems, 50);
             }
         });
     }
+
+    // Initialize masonry on page load
+    initMasonry();
+
+    // Recalculate on window resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resizeGridItems, 250);
+    });
 });
