@@ -2,16 +2,16 @@
 /* --- 1. Reset & Global --- */
 /* ------------------- */
 :root {
-    /* --- PALETTE --- */
+    /* --- PALETTE (GOLD DESIGN SYSTEM) --- */
     --color-dark: #2D3748;     /* Charcoal for text */
-    --color-mid: #4A5568;     /* Slate Blue for sub-text */
-    --color-light: #FFFFFF;   /* Crisp White */
-    --color-bg-light: #F5F5F5;/* Light Soft Gray */
-    --color-border: #E8E8E8;  /* Bright Silver */
-    --color-accent: #0E7C86;  /* Bold Teal */
+    --color-mid: #4A5568;      /* Slate Blue for sub-text */
+    --color-light: #FFFFFF;    /* Crisp White */
+    --color-bg-light: #F5F5F5; /* Light Soft Gray */
+    --color-border: #E8E8E8;   /* Bright Silver */
+    --color-accent: #FDB813;   /* Strong Gold - Primary accent */
 
-    /* --- NEW SECONDARY ACCENT --- */
-    --color-accent-secondary: #D4A574; /* Rich Gold - matches logo */
+    /* --- SECONDARY ACCENT --- */
+    --color-accent-secondary: #2D3748; /* Dark Charcoal */
 
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Lato', sans-serif;
@@ -91,7 +91,7 @@ section {
 
 .btn-primary {
     background-color: var(--color-accent);
-    color: var(--color-light); /* White text on accent */
+    color: var(--color-dark); /* Dark text on gold background */
     font-weight: 700;
 }
 .btn-primary:hover {
@@ -161,7 +161,7 @@ section {
 }
 
 .nav-links .btn {
-    color: var(--color-light) !important; /* White text for buttons in nav */
+    color: var(--color-dark) !important; /* Dark text for gold buttons in nav */
 }
 
 /* --- Mobile Nav --- */
@@ -196,7 +196,7 @@ section {
 }
 
 .hero h1 {
-    color: var(--color-accent); /* Accent color */
+    color: var(--color-accent-secondary); /* Dark charcoal for strong contrast */
 }
 
 .hero .subheadline {
@@ -229,7 +229,7 @@ section {
 }
 
 .highlight-accent {
-    color: var(--color-accent-secondary); /* Gold accent color */
+    color: var(--color-accent-secondary); /* Dark charcoal for emphasis */
 }
 
 /* ------------------- */
@@ -294,9 +294,8 @@ section {
 
 .filter-btn:hover,
 .filter-btn.active {
-    /* --- UPDATED --- */
     background: var(--color-accent);
-    color: var(--color-light); /* White text on hover */
+    color: var(--color-dark); /* Dark text on gold background */
 }
 
 /* --- Gallery Grid --- Masonry Layout */
@@ -385,11 +384,11 @@ section {
 }
 
 .service-item:first-child {
-    background-color: var(--color-accent); /* Teal for Fleet & Vehicle Wraps */
+    background-color: var(--color-accent); /* Gold for Fleet & Vehicle Wraps */
 }
 
 .service-item:last-child {
-    background-color: var(--color-accent-secondary); /* Tan/Gold for Trade Show */
+    background-color: var(--color-accent-secondary); /* Dark charcoal for Trade Show */
 }
 
 .service-item h3 {
@@ -465,28 +464,28 @@ section {
 /* --- 8. Final CTA Section --- */
 /* ------------------- */
 .final-cta {
-    background-color: var(--color-accent); /* Accent bg */
-    color: var(--color-light); /* White text */
+    background-color: var(--color-accent); /* Gold background */
+    color: var(--color-dark); /* Dark text */
     text-align: center;
     padding: 6rem 0;
 }
 
 .final-cta h2 {
-    color: var(--color-light); /* White text */
+    color: var(--color-dark); /* Dark text on gold */
 }
 
 .final-cta .subheadline {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 0;
-    color: var(--color-light);
+    color: var(--color-dark);
 }
 
 .final-cta .stats {
     font-size: 1rem;
     max-width: 600px;
     margin: 0.5rem auto 2rem auto;
-    color: var(--color-light);
+    color: var(--color-dark);
 }
 
 .final-cta sup {
@@ -503,12 +502,12 @@ section {
     color: var(--color-dark); /* Dark text */
 }
 .final-cta .btn-secondary {
-    border-color: var(--color-light); /* White border */
-    color: var(--color-light); /* White text */
+    border-color: var(--color-dark); /* Dark border */
+    color: var(--color-dark); /* Dark text */
 }
 .final-cta .btn-secondary:hover {
-    background-color: var(--color-light);
-    color: var(--color-dark);
+    background-color: var(--color-dark);
+    color: var(--color-light);
 }
 
 /* ------------------- */
