@@ -3,8 +3,8 @@
 <!-- Contact Section -->
 <section class="gallery">
     <div class="container" style="max-width: 900px; padding-bottom: 8rem;">
-        <h2>{{ .Params.heading }}</h2>
-        <p class="subheadline">{{ .Params.subheading }}</p>
+        <h2>{{ .Params.heading | safeHTML }}</h2>
+        <p class="subheadline">{{ .Params.subheading | safeHTML }}</p>
 
         <!-- Render Markdown content from _index.md -->
         <div class="contact-info">
