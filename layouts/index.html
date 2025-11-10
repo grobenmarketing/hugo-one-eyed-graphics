@@ -3,7 +3,7 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
-        <h1>{{ .Params.hero.title }}</h1>
+        <h1>{{ .Params.hero.title | safeHTML }}</h1>
         <p class="subheadline">{{ .Params.hero.subtitle }}</p>
         <div>
             <a href="{{ .Params.hero.cta_primary_link | relURL }}" class="btn btn-primary">{{ .Params.hero.cta_primary_text }}</a>
