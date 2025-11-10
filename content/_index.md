@@ -10,7 +10,7 @@ hero:
   cta_secondary_link: "#gallery"
 
 problem:
-  title: 'Are Your Work Vehicles <span class="highlight-accent">Costing You New Jobs?</span>'
+  title: '<span class="highlight-blue">Are Your Work Vehicles</span> <span class="highlight-accent">Costing You New Jobs?</span>'
   paragraphs:
     - "You do great work,but basic decals or un-marked fleets aren't getting customers."
     - "You're missing referral opportunities."

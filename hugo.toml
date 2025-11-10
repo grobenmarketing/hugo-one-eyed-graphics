@@ -13,8 +13,8 @@ title = "One Eyed Graphics"
 
   [params.social]
     facebook = "#"
-    instagram = "#"
     linkedin = "#"
+    google = "#"
 
 [markup]
   [markup.goldmark]
