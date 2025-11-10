@@ -2,7 +2,7 @@
 title: "Home"
 
 hero:
-  title: "While You're Working, Driving, or Parked<br><u>Your Fleet Should Be Selling For You</u>."
+  title: "While You're Working, Driving, or Parked <i>Your Fleet Should Be Selling For You<i/>."
   subtitle: "Stop waiting for the phone to ring. A single wrap can get 1,600 views per hour."
   cta_primary_text: "I Want My Fleet to Sell For Me"
   cta_primary_link: "/contact"
