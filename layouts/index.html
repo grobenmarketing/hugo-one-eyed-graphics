@@ -4,7 +4,7 @@
 <section class="hero">
     <div class="container">
         <h1>{{ .Params.hero.title | safeHTML }}</h1>
-        <p class="subheadline">{{ .Params.hero.subtitle }}</p>
+        <p class="subheadline">{{ .Params.hero.subtitle | safeHTML }}</p>
         <div>
             <a href="{{ .Params.hero.cta_primary_link | relURL }}" class="btn btn-primary">{{ .Params.hero.cta_primary_text }}</a>
             <a href="{{ .Params.hero.cta_secondary_link }}" class="btn btn-secondary">{{ .Params.hero.cta_secondary_text }}</a>
@@ -17,7 +17,7 @@
     <div class="container">
         <h2>{{ .Params.problem.title | safeHTML }}</h2>
         {{ range .Params.problem.paragraphs }}
-        <p>{{ . }}</p>
+        <p>{{ . | safeHTML }}</p>
         {{ end }}
         <p class="highlight">{{ .Params.problem.highlight | safeHTML }}</p>
     </div>
@@ -29,8 +29,8 @@
         <div class="pillar-grid">
             {{ range .Params.pillars }}
             <div class="pillar">
-                <h3>{{ .title }}</h3>
-                <p>{{ .description }}</p>
+                <h3>{{ .title | safeHTML }}</h3>
+                <p>{{ .description | safeHTML }}</p>
             </div>
             {{ end }}
         </div>
@@ -40,8 +40,8 @@
 <!-- Gallery Section -->
 <section class="gallery" id="gallery">
     <div class="container">
-        <h2>{{ .Params.gallery.title }}</h2>
-        <p class="subheadline">{{ .Params.gallery.subtitle }}</p>
+        <h2>{{ .Params.gallery.title | safeHTML }}</h2>
+        <p class="subheadline">{{ .Params.gallery.subtitle | safeHTML }}</p>
 
         <!-- Filter Buttons -->
         <div class="filter-buttons" id="filterBtnContainer">
@@ -71,7 +71,7 @@
 <!-- Final CTA Section -->
 <section class="final-cta">
     <div class="container">
-        <h2>{{ .Params.cta.title }}</h2>
+        <h2>{{ .Params.cta.title | safeHTML }}</h2>
         <p class="subheadline">{{ .Params.cta.subtitle | safeHTML }}</p>
         <p class="stats">{{ .Params.cta.stats | safeHTML }}</p>
         <div>
