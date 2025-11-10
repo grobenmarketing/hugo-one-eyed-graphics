@@ -184,25 +184,55 @@ section {
 /* --- 4. Hero Section --- */
 /* ------------------- */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('/images/gallery/vehicle/IMG_4610.jpeg');
+    position: relative;
+    background-image: url('/images/gallery/vehicle/IMG_4610.jpeg');
     background-size: cover;
     background-position: center;
     padding: 8rem 0;
     text-align: center;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(25, 50, 90, 0.85) 0%,
+        rgba(15, 30, 60, 0.90) 100%
+    );
+    z-index: 1;
+}
+
 .hero .container {
+    position: relative;
     max-width: 900px;
+    z-index: 2;
 }
 
 .hero h1 {
-    color: var(--color-accent-secondary); /* Dark charcoal for strong contrast */
+    color: var(--color-light); /* White text for dark overlay */
 }
 
 .hero .subheadline {
     font-size: 1.5rem;
     color: var(--color-light); /* White text for dark overlay */
     margin-bottom: 2rem;
+}
+
+/* Hero button overrides */
+.hero .btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent); /* Gold text */
+    border-color: var(--color-accent); /* Gold border */
+}
+
+.hero .btn-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
 }
 
 /* ------------------- */
