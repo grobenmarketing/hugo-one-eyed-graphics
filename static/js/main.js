@@ -11,55 +11,56 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Masonry layout function - sets row spans based on image heights
-    function resizeGridItems() {
+    function resizeGridItem(item) {
         const grid = document.querySelector('.gallery-grid');
         if (!grid) return;
 
-        const galleryItems = document.querySelectorAll('.gallery-item');
         const rowHeight = 1; // matches grid-auto-rows: 1px
-        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap'));
+        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap')) || 16;
 
+        const img = item.querySelector('img');
+        if (img && img.complete && img.naturalHeight > 0) {
+            // Use actual rendered height of the image
+            const height = img.getBoundingClientRect().height;
+            const rowSpan = Math.ceil((height + rowGap) / (rowHeight + rowGap));
+            item.style.gridRowEnd = 'span ' + rowSpan;
+        }
+    }
+
+    function resizeAllGridItems() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
         galleryItems.forEach(item => {
             // Only calculate for visible items
-            if (item.style.display === 'none') return;
-
-            const content = item.querySelector('img');
-            if (content && content.complete) {
-                const height = item.getBoundingClientRect().height;
-                const rowSpan = Math.ceil((height + rowGap) / (rowHeight + rowGap));
-                item.style.gridRowEnd = 'span ' + rowSpan;
+            if (item.style.display !== 'none') {
+                resizeGridItem(item);
             }
         });
     }
 
     // Load all images and then apply masonry layout
     function initMasonry() {
-        const images = document.querySelectorAll('.gallery-item img');
-        let loadedCount = 0;
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
-        if (images.length === 0) return;
+        if (galleryItems.length === 0) return;
 
-        images.forEach(img => {
-            if (img.complete) {
-                loadedCount++;
+        galleryItems.forEach(item => {
+            const img = item.querySelector('img');
+            if (!img) return;
+
+            if (img.complete && img.naturalHeight > 0) {
+                // Image already loaded
+                resizeGridItem(item);
             } else {
-                img.addEventListener('load', () => {
-                    loadedCount++;
-                    // Apply masonry progressively as images load
-                    resizeGridItems();
+                // Wait for image to load
+                img.addEventListener('load', function() {
+                    resizeGridItem(item);
                 });
                 // Handle image load errors
-                img.addEventListener('error', () => {
-                    loadedCount++;
+                img.addEventListener('error', function() {
                     console.warn('Failed to load image:', img.src);
                 });
             }
         });
-
-        // If all images are already cached/loaded
-        if (loadedCount === images.length) {
-            resizeGridItems();
-        }
     }
 
     // Gallery filter functionality
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // Recalculate masonry after filtering
-                setTimeout(resizeGridItems, 50);
+                setTimeout(resizeAllGridItems, 50);
             }
         });
     }
@@ -101,6 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let resizeTimer;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(resizeGridItems, 250);
+        resizeTimer = setTimeout(resizeAllGridItems, 250);
     });
 });
