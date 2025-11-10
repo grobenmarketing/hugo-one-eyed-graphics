@@ -2,7 +2,7 @@
 title: "Home"
 
 hero:
-  title: "While You're Working, Driving, or Parked Your Fleet Should Be Selling For You."
+  title: "While You're Working, Driving, or Parked| <u>Your Fleet Should Be Selling For You</u>."
   subtitle: "Stop waiting for the phone to ring. A single wrap can get 1,600 views per hour."
   cta_primary_text: "I Want My Fleet to Sell For Me"
   cta_primary_link: "/contact"
@@ -10,7 +10,7 @@ hero:
   cta_secondary_link: "#gallery"
 
 problem:
-  title: 'Are Your Work Vehicles <span class="highlight-accent">Costing You New Jobs?</span>'
+  title: '<span class="highlight-blue">Are Your Work Vehicles</span> <span class="highlight-accent">Costing You New Jobs?</span>'
   paragraphs:
     - "You do great work,but basic decals or un-marked fleets aren't getting customers."
     - "You're missing referral opportunities."

@@ -2,16 +2,17 @@
 /* --- 1. Reset & Global --- */
 /* ------------------- */
 :root {
-    /* --- PALETTE --- */
+    /* --- PALETTE (GOLD DESIGN SYSTEM) --- */
     --color-dark: #2D3748;     /* Charcoal for text */
-    --color-mid: #4A5568;     /* Slate Blue for sub-text */
-    --color-light: #FFFFFF;   /* Crisp White */
-    --color-bg-light: #F5F5F5;/* Light Soft Gray */
-    --color-border: #E8E8E8;  /* Bright Silver */
-    --color-accent: #0E7C86;  /* Bold Teal */
+    --color-mid: #4A5568;      /* Slate Blue for sub-text */
+    --color-light: #FFFFFF;    /* Crisp White */
+    --color-bg-light: #F5F5F5; /* Light Soft Gray */
+    --color-border: #E8E8E8;   /* Bright Silver */
+    --color-accent: #FDB813;   /* Strong Gold - Primary accent */
+    --color-blue: #19325A;     /* Dark Blue - Hero overlay color */
 
-    /* --- NEW SECONDARY ACCENT --- */
-    --color-accent-secondary: #D4A574; /* Rich Gold - matches logo */
+    /* --- SECONDARY ACCENT --- */
+    --color-accent-secondary: #2D3748; /* Dark Charcoal */
 
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Lato', sans-serif;
@@ -91,7 +92,7 @@ section {
 
 .btn-primary {
     background-color: var(--color-accent);
-    color: var(--color-light); /* White text on accent */
+    color: var(--color-dark); /* Dark text on gold background */
     font-weight: 700;
 }
 .btn-primary:hover {
@@ -161,7 +162,11 @@ section {
 }
 
 .nav-links .btn {
-    color: var(--color-light) !important; /* White text for buttons in nav */
+    color: var(--color-dark) !important; /* Dark text for gold buttons in nav */
+}
+
+.nav-links .btn:hover {
+    color: var(--color-light) !important; /* White text on hover */
 }
 
 /* --- Mobile Nav --- */
@@ -184,25 +189,55 @@ section {
 /* --- 4. Hero Section --- */
 /* ------------------- */
 .hero {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('/images/gallery/vehicle/IMG_4610.jpeg');
+    position: relative;
+    background-image: url('/images/gallery/vehicle/IMG_4610.jpeg');
     background-size: cover;
     background-position: center;
     padding: 8rem 0;
     text-align: center;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(25, 50, 90, 0.85) 0%,
+        rgba(15, 30, 60, 0.90) 100%
+    );
+    z-index: 1;
+}
+
 .hero .container {
+    position: relative;
     max-width: 900px;
+    z-index: 2;
 }
 
 .hero h1 {
-    color: var(--color-accent); /* Accent color */
+    color: var(--color-light); /* White text for dark overlay */
 }
 
 .hero .subheadline {
     font-size: 1.5rem;
-    color: var(--color-mid); /* Softer sub-text */
+    color: var(--color-light); /* White text for dark overlay */
     margin-bottom: 2rem;
+}
+
+/* Hero button overrides */
+.hero .btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent); /* Gold text */
+    border-color: var(--color-accent); /* Gold border */
+}
+
+.hero .btn-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
 }
 
 /* ------------------- */
@@ -229,7 +264,11 @@ section {
 }
 
 .highlight-accent {
-    color: var(--color-accent-secondary); /* Gold accent color */
+    color: var(--color-accent); /* Gold/yellow for emphasis */
+}
+
+.highlight-blue {
+    color: var(--color-blue); /* Dark blue for emphasis */
 }
 
 /* ------------------- */
@@ -264,7 +303,7 @@ section {
 }
 
 .gallery h2 {
-    color: var(--color-accent); /* Accent color */
+    color: var(--color-blue); /* Dark blue color */
 }
 
 .gallery .subheadline {
@@ -294,34 +333,60 @@ section {
 
 .filter-btn:hover,
 .filter-btn.active {
-    /* --- UPDATED --- */
     background: var(--color-accent);
-    color: var(--color-light); /* White text on hover */
+    color: var(--color-dark); /* Dark text on gold background */
 }
 
-/* --- Gallery Grid --- */
+/* --- Gallery Grid --- Masonry Layout */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 1px; /* Tiny rows for precise masonry control */
     gap: 1rem;
 }
 
 .gallery-item {
     border-radius: 5px;
     overflow: hidden;
-    background: var(--color-light); /* White bg */
-    transition: opacity 0.4s ease;
+    background: var(--color-bg-light); /* Light gray bg for loading state */
+    transition: opacity 0.4s ease, transform 0.3s ease;
+    /* Row span will be set dynamically by JS */
+    min-height: 200px; /* Minimum height to prevent thin lines */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-item img {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    background: var(--color-bg-light);
+}
+
+/* Loading state for images */
+.gallery-item img:not([src]) {
+    opacity: 0;
+}
+
+.gallery-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .gallery-item:hover img {
     transform: scale(1.05);
+}
+
+/* --- View More Button --- */
+.view-more-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.view-more-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
 }
 
 /* ------------------- */
@@ -369,11 +434,11 @@ section {
 }
 
 .service-item:first-child {
-    background-color: var(--color-accent); /* Teal for Fleet & Vehicle Wraps */
+    background-color: var(--color-accent); /* Gold for Fleet & Vehicle Wraps */
 }
 
 .service-item:last-child {
-    background-color: var(--color-accent-secondary); /* Tan/Gold for Trade Show */
+    background-color: var(--color-accent-secondary); /* Dark charcoal for Trade Show */
 }
 
 .service-item h3 {
@@ -449,28 +514,28 @@ section {
 /* --- 8. Final CTA Section --- */
 /* ------------------- */
 .final-cta {
-    background-color: var(--color-accent); /* Accent bg */
-    color: var(--color-light); /* White text */
+    background-color: var(--color-accent); /* Gold background */
+    color: var(--color-dark); /* Dark text */
     text-align: center;
     padding: 6rem 0;
 }
 
 .final-cta h2 {
-    color: var(--color-light); /* White text */
+    color: var(--color-dark); /* Dark text on gold */
 }
 
 .final-cta .subheadline {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 0;
-    color: var(--color-light);
+    color: var(--color-dark);
 }
 
 .final-cta .stats {
     font-size: 1rem;
     max-width: 600px;
     margin: 0.5rem auto 2rem auto;
-    color: var(--color-light);
+    color: var(--color-dark);
 }
 
 .final-cta sup {
@@ -487,12 +552,12 @@ section {
     color: var(--color-dark); /* Dark text */
 }
 .final-cta .btn-secondary {
-    border-color: var(--color-light); /* White border */
-    color: var(--color-light); /* White text */
+    border-color: var(--color-dark); /* Dark border */
+    color: var(--color-dark); /* Dark text */
 }
 .final-cta .btn-secondary:hover {
-    background-color: var(--color-light);
-    color: var(--color-dark);
+    background-color: var(--color-dark);
+    color: var(--color-light);
 }
 
 /* ------------------- */
@@ -524,6 +589,7 @@ footer .logo {
 footer .slogan {
     font-style: italic;
     margin-bottom: 1rem;
+    color: #F5F5F5; /* Almost white */
 }
 
 .social-icons a {
@@ -559,6 +625,7 @@ footer h4 {
 
 .footer-contact p {
     margin-bottom: 0.5rem;
+    color: #F5F5F5; /* Almost white */
 }
 
 .bottom-bar {
@@ -566,7 +633,7 @@ footer h4 {
     padding: 1.5rem 0;
     /* --- UPDATED --- */
     font-size: 0.9rem;
-    color: #BBBBBB; /* Brighter gray */
+    color: #F5F5F5; /* Almost white */
 }
 
 /* ------------------- */
