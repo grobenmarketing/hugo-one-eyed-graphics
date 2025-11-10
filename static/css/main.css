@@ -310,8 +310,8 @@ section {
 .gallery-item {
     border-radius: 5px;
     overflow: hidden;
-    background: var(--color-light); /* White bg */
-    transition: opacity 0.4s ease;
+    background: var(--color-bg-light); /* Light gray bg for loading state */
+    transition: opacity 0.4s ease, transform 0.3s ease;
     /* Row span will be set dynamically by JS */
 }
 
@@ -319,7 +319,17 @@ section {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    background: var(--color-bg-light);
+}
+
+/* Loading state for images */
+.gallery-item img:not([src]) {
+    opacity: 0;
+}
+
+.gallery-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .gallery-item:hover img {

@@ -45,9 +45,13 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 img.addEventListener('load', () => {
                     loadedCount++;
-                    if (loadedCount === images.length) {
-                        resizeGridItems();
-                    }
+                    // Apply masonry progressively as images load
+                    resizeGridItems();
+                });
+                // Handle image load errors
+                img.addEventListener('error', () => {
+                    loadedCount++;
+                    console.warn('Failed to load image:', img.src);
                 });
             }
         });
