@@ -1,23 +1,36 @@
-{{- /* Gallery Partial - Dynamically loads images from static/images/gallery folders */ -}}
+{{- /* Gallery Partial - Auto-detects categories from folders and uses Netlify Image CDN */ -}}
+{{- /* Dynamically loads images from static/images/gallery/ organized by folder */ -}}
 
-{{- /* Get all gallery pages organized by category */ -}}
-{{- range $category := .Site.Data.gallery_categories -}}
-    {{- /* Get all images for this category from static/images/gallery/{category}/ */ -}}
-    {{- $categoryPath := printf "images/gallery/%s" $category.slug -}}
-    {{- $images := readDir (path.Join "static" $categoryPath) -}}
+{{- $galleryPath := "static/images/gallery" -}}
+{{- $categories := readDir $galleryPath -}}
 
-    {{- range $images -}}
-        {{- if not .IsDir -}}
-            {{- /* Build direct image path */ -}}
-            {{- $imagePath := printf "/%s/%s" $categoryPath .Name -}}
+{{- range $categories -}}
+    {{- if .IsDir -}}
+        {{- $categorySlug := .Name -}}
+        {{- $categoryPath := printf "images/gallery/%s" $categorySlug -}}
+        {{- $images := readDir (path.Join "static" $categoryPath) -}}
 
-            <div class="gallery-item" data-category="{{ $category.slug }}">
-                <img
-                    src="{{ $imagePath }}"
-                    alt="{{ $category.name }} - {{ .Name }}"
-                    loading="lazy"
-                    decoding="async">
-            </div>
+        {{- range $images -}}
+            {{- if not .IsDir -}}
+                {{- $ext := path.Ext .Name -}}
+                {{- if or (eq $ext ".jpg") (eq $ext ".jpeg") (eq $ext ".png") (eq $ext ".webp") (eq $ext ".JPG") (eq $ext ".JPEG") (eq $ext ".PNG") -}}
+                    {{- $imagePath := printf "/%s/%s" $categoryPath .Name -}}
+                    {{- /* Generate Netlify Image CDN URLs - 480px thumbnail for gallery grid, larger for full view */ -}}
+                    {{- $thumbnail := printf "/.netlify/images?url=%s&w=480&q=85" $imagePath -}}
+                    {{- $medium := printf "/.netlify/images?url=%s&w=800&q=85" $imagePath -}}
+                    {{- $large := printf "/.netlify/images?url=%s&w=1200&q=90" $imagePath -}}
+
+                    <div class="gallery-item" data-category="{{ $categorySlug }}">
+                        <img
+                            src="{{ $thumbnail }}"
+                            srcset="{{ $thumbnail }} 480w, {{ $medium }} 800w, {{ $large }} 1200w"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            alt="{{ $categorySlug }} - {{ .Name }}"
+                            loading="lazy"
+                            decoding="async">
+                    </div>
+                {{- end -}}
+            {{- end -}}
         {{- end -}}
     {{- end -}}
 {{- end -}}
