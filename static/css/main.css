@@ -580,6 +580,7 @@ footer .logo {
 footer .slogan {
     font-style: italic;
     margin-bottom: 1rem;
+    color: #F5F5F5; /* Almost white */
 }
 
 .social-icons a {
