@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Gallery filter functionality
+    // Gallery filter and pagination functionality
     const filterContainer = document.getElementById('filterBtnContainer');
     const galleryItems = document.querySelectorAll('.gallery-item');
     const viewMoreBtn = document.getElementById('viewMoreBtn');
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to update gallery display
+    // Function to update gallery display with pagination
     function updateGalleryDisplay() {
         const filteredItems = getFilteredItems();
 
@@ -97,6 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (viewMoreContainer) {
             viewMoreContainer.style.display = filteredItems.length > visibleCount ? 'block' : 'none';
         }
+
+        // Recalculate masonry after display changes
+        setTimeout(resizeAllGridItems, 50);
     }
 
     // Initialize gallery display
@@ -115,19 +118,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Add active class to clicked button
                 e.target.classList.add('active');
 
-                // Filter gallery items
-                const filterValue = e.target.getAttribute('data-filter');
-                galleryItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-
-                // Recalculate masonry after filtering
-                setTimeout(resizeAllGridItems, 50);
+                // Update filter and reset pagination
+                currentFilter = e.target.getAttribute('data-filter');
+                visibleCount = IMAGES_PER_PAGE;
+                updateGalleryDisplay();
             }
+        });
+    }
+
+    // View More button functionality
+    if (viewMoreBtn) {
+        viewMoreBtn.addEventListener('click', function() {
+            visibleCount += IMAGES_PER_PAGE;
+            updateGalleryDisplay();
         });
     }
 

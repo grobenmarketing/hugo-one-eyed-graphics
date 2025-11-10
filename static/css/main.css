@@ -214,13 +214,25 @@ section {
 }
 
 .hero h1 {
-    color: var(--color-accent-secondary); /* Dark charcoal for strong contrast */
+    color: var(--color-light); /* White text for dark overlay */
 }
 
 .hero .subheadline {
     font-size: 1.5rem;
     color: var(--color-light); /* White text for dark overlay */
     margin-bottom: 2rem;
+}
+
+/* Hero button overrides */
+.hero .btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent); /* Gold text */
+    border-color: var(--color-accent); /* Gold border */
+}
+
+.hero .btn-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
 }
 
 /* ------------------- */
