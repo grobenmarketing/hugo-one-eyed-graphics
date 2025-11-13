@@ -4,15 +4,15 @@
 <section id="about">
   <div class="container">
     <div class="about-grid">
+      <div class="about-image">
+        <img src="{{ "images/Jack Motta.png" | relURL }}" alt="Jack Motta - Owner, One Eyed Graphics" loading="lazy">
+      </div>
       <div class="about-content">
         <h2>{{ .Params.about.title | safeHTML }}</h2>
         {{ range .Params.about.paragraphs }}
         <p>{{ . | safeHTML }}</p>
         {{ end }}
         <p class="highlight">{{ .Params.about.highlight | safeHTML }}</p>
-      </div>
-      <div class="about-image">
-        <img src="{{ "images/Jack Motta.png" | relURL }}" alt="Jack Motta - Owner, One Eyed Graphics" loading="lazy">
       </div>
     </div>
   </div>
