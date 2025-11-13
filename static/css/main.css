@@ -134,6 +134,15 @@ section {
     color: var(--color-dark); /* Dark text logo */
     text-decoration: none;
     transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-image {
+    height: 50px;
+    width: auto;
+    display: block;
 }
 
 .logo:hover {

@@ -1,6 +1,9 @@
 <header class="main-header">
     <div class="container">
-        <a href="{{ "/" | relURL }}" class="logo">{{ .Site.Title }}</a>
+        <a href="{{ "/" | relURL }}" class="logo">
+            <img src="{{ "images/one-eyed-graphics-logo.png" | relURL }}" alt="One Eyed Graphics Logo" class="logo-image">
+            <span>{{ .Site.Title }}</span>
+        </a>
         <nav>
             <ul class="nav-links" id="navLinks">
                 <li><a href="{{ "/" | relURL }}" class="{{ if .IsHome }}active{{ end }}">Home</a></li>
