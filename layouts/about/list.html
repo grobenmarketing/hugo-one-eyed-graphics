@@ -4,15 +4,15 @@
 <section id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-content">
-        <h2>{{ .Params.about.title }}</h2>
-        {{ range .Params.about.paragraphs }}
-        <p>{{ . }}</p>
-        {{ end }}
-        <p class="highlight">{{ .Params.about.highlight }}</p>
-      </div>
       <div class="about-image">
-        <img src="https://placehold.co/600x400/d0d0d0/d0d0d0" alt="About One Eyed Graphics" loading="lazy">
+        <img src="{{ "images/Jack Motta.png" | relURL }}" alt="Jack Motta - Owner, One Eyed Graphics" loading="lazy">
+      </div>
+      <div class="about-content">
+        <h2>{{ .Params.about.title | safeHTML }}</h2>
+        {{ range .Params.about.paragraphs }}
+        <p>{{ . | safeHTML }}</p>
+        {{ end }}
+        <p class="highlight">{{ .Params.about.highlight | safeHTML }}</p>
       </div>
     </div>
   </div>
@@ -21,14 +21,14 @@
 <!-- Services Section -->
 <section class="gallery" id="services">
   <div class="container">
-    <h2>{{ .Params.services.title }}</h2>
-    <p class="subheadline">{{ .Params.services.subtitle }}</p>
+    <h2>{{ .Params.services.title | safeHTML }}</h2>
+    <p class="subheadline">{{ .Params.services.subtitle | safeHTML }}</p>
 
     <div class="service-grid">
       {{ range $index, $item := .Params.services.items }}
       <div class="service-item">
-        <h3>{{ .title }}</h3>
-        <p>{{ .description }}</p>
+        <h3>{{ .title | safeHTML }}</h3>
+        <p>{{ .description | safeHTML }}</p>
         {{ with .list_items }}
         <ul>
           {{ range . }}
@@ -37,7 +37,13 @@
         </ul>
         {{ end }}
         <div class="service-image">
+          {{ if eq $index 0 }}
+          <img src="{{ "images/boat.jpg" | relURL }}" alt="{{ .title }}" loading="lazy">
+          {{ else if eq $index 1 }}
+          <img src="{{ "images/sign.jpg" | relURL }}" alt="{{ .title }}" loading="lazy">
+          {{ else }}
           <img src="https://placehold.co/800x300/d0d0d0/d0d0d0" alt="{{ .title }}" loading="lazy">
+          {{ end }}
         </div>
       </div>
       {{ end }}
@@ -48,11 +54,11 @@
 <!-- Process Section -->
 <section class="pillars">
   <div class="container">
-    <h2 style="text-align: center; margin-bottom: 3rem; color: var(--color-accent);">{{ .Params.process.title }}</h2>
+    <h2 style="text-align: center; margin-bottom: 3rem; color: var(--color-accent);">{{ .Params.process.title | safeHTML }}</h2>
     <div class="pillar-grid">
       {{ range .Params.process.steps }}
       <div class="pillar">
-        <h3>{{ .title }}</h3>
+        <h3>{{ .title | safeHTML }}</h3>
         <p>{{ .description | safeHTML }}</p>
       </div>
       {{ end }}
@@ -64,7 +70,7 @@
 <!-- Final CTA Section -->
 <section class="final-cta">
     <div class="container">
-        <h2>{{ .Params.cta.title }}</h2>
+        <h2>{{ .Params.cta.title | safeHTML }}</h2>
         <p class="subheadline">{{ .Params.cta.subtitle | safeHTML }}</p>
         <p class="stats">{{ .Params.cta.stats | safeHTML }}</p>
         <div>
