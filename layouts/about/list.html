@@ -12,7 +12,7 @@
         <p class="highlight">{{ .Params.about.highlight | safeHTML }}</p>
       </div>
       <div class="about-image">
-        <img src="https://placehold.co/600x400/d0d0d0/d0d0d0" alt="About One Eyed Graphics" loading="lazy">
+        <img src="{{ "images/Jack Motta.png" | relURL }}" alt="Jack Motta - Owner, One Eyed Graphics" loading="lazy">
       </div>
     </div>
   </div>
@@ -37,7 +37,13 @@
         </ul>
         {{ end }}
         <div class="service-image">
+          {{ if eq $index 0 }}
+          <img src="{{ "images/boat.jpg" | relURL }}" alt="{{ .title }}" loading="lazy">
+          {{ else if eq $index 1 }}
+          <img src="{{ "images/sign.jpg" | relURL }}" alt="{{ .title }}" loading="lazy">
+          {{ else }}
           <img src="https://placehold.co/800x300/d0d0d0/d0d0d0" alt="{{ .title }}" loading="lazy">
+          {{ end }}
         </div>
       </div>
       {{ end }}
