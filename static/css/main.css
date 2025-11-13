@@ -413,7 +413,7 @@ section {
 }
 
 .about-image {
-    flex: 2;
+    flex: 1;
 }
 
 .about-image img {
