@@ -417,10 +417,8 @@ section {
 }
 
 .about-image img {
-    width: 100%;
-    height: auto;
-    max-height: 350px;
-    object-fit: cover;
+    width: auto;
+    height: 280px;
     border-radius: 8px;
     background-color: #d0d0d0;
 }
