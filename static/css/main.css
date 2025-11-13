@@ -403,7 +403,7 @@ section {
 /* ------------------- */
 .about-grid {
     display: flex;
-    gap: 3rem;
+    gap: 1.5rem;
     align-items: flex-start;
 }
 
